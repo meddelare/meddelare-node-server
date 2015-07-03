@@ -1,6 +1,6 @@
 {
     "name": "meddelare-server",
-    "version": "1.4.1",
+    "version": "1.4.2",
     "description": "Install custom social share counters on your website with your own hosted solution, which only makes a single API request and loads minimal or zero assets to display the counters.",
     "homepage": "http://meddelare.com/",
     "repository": {
