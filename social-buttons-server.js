@@ -5,7 +5,10 @@ var express = require("express"),
     cors = require("cors"),
 
     SocialButtonsServerMiddleware = require("./lib/social-buttons-server-middleware.js"),
-    socialButtonsServerMiddleware = new SocialButtonsServerMiddleware(),
+    socialButtonsServerMiddlewareOptions = {
+        httpCacheTime: process.env.CACHE_TIME,
+    },
+    socialButtonsServerMiddleware = new SocialButtonsServerMiddleware(socialButtonsServerMiddlewareOptions),
 
     morgan = require("morgan"),
     expressLogger = morgan("combined", {
