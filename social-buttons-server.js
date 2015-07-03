@@ -4,7 +4,8 @@ var express = require("express"),
 
     cors = require("cors"),
 
-    socialButtonsServer = require("./lib/social-buttons-server-middleware.js"),
+    SocialButtonsServerMiddleware = require("./lib/social-buttons-server-middleware.js"),
+    socialButtonsServerMiddleware = new SocialButtonsServerMiddleware(),
 
     morgan = require("morgan"),
     expressLogger = morgan("combined", {
@@ -46,7 +47,7 @@ app.options("*", cors(corsOptions));
 
 
 
-app.use("/", socialButtonsServer());
+app.use("/", socialButtonsServerMiddleware.getRouter());
 
 app.listen(PORT, function() {
     console.log("Listening on " + PORT);
