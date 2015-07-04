@@ -1,90 +1,140 @@
 # [Meddelare](http://meddelare.com/) Social Buttons Server [meddelare-node-server](https://github.com/meddelare/meddelare-node-server)
 
 
-Install social share counters on your website with your own hosted solution which only makes 1 API request and loads minimal or zero assets to display the counters.
+Install **custom social share counters** on your website with your **own hosted solution**, which only makes **a single API request** and loads **minimal or zero assets** to display the counters.
 
-This is an open source and self-hosted alternative to services such as AddThis and ShareThis. 
+Check out [meddelare.com](http://meddelare.com/)!
 
-Because you run the middle man server your self, you are also defending your users privacy against the social networks. (Users only opt into the tracking once they decide to share and not just because they visited your page)
+This is an open source and self-hosted alternative to sharing services such as AddThis and ShareThis. Because you run the proxy server yourself, you are also defending your users' privacy against the social networks' tracking. Users only opt in to their tracking once they decide to click a share button -- never implicitly just because they visited your page.
 
-* [Example API Call](https://meddelare-node-server.herokuapp.com/?networks=facebook,twitter,googleplus&url=http://meddelare.com)
-* [Example API Call with Buttons](https://meddelare.github.io/meddelare-examples/examples/button.html)
-* [Example API Call with Text (fast)](https://meddelare.github.io/meddelare-examples/examples/text.html)
+[![A screenshot of the button example](https://meddelare.github.io/examples/button/screenshot.png)](https://meddelare.github.io/)
+
+View examples on [meddelare.github.io/meddelare-examples](https://meddelare.github.io/meddelare-examples).
+
 
 
 ## Features
-* Heroku enabled, create an app and deploy instantly
-* Has cache control variable(default 4 mins) so you can throw CloudFront in front with ease which result in faster API calls and less chance of getting rate limited
+
+- Get counts from multiple social networks in one API call, delivered as [JSON](https://en.wikipedia.org/wiki/JSON) or [JSONP](https://en.wikipedia.org/wiki/JSONP).
+- The server calls social networks in parallel, making it (approximately) as fast to get the count from one as several at once.
+- No third party requirements -- you can host both the social buttons server and any resources yourself.
+- Proxies calls from your users to the social networks, blocking their user tracking until the user decides to click a share button.
+- Heroku enabled -- create an app and deploy instantly.
+- Sends cache control HTTP headers so you can throw a [content delivery network](https://en.wikipedia.org/wiki/Content_delivery_network) (CDN) service, such as CloudFront, in front with ease. This should result in faster API calls and less chance of getting rate limited.
+
+
 
 ## Getting started
 
-1. Clone(or fork) the repository
-2. Install dependencies `npm install`
-3. Run the server `node social-buttons-server.js`
-4. Access your stats at `http://localhost:5000/?networks=facebook,twitter,googleplus&url=http://meddelare.com`
-5. __Optionally push to a heroku app to automatically deploy__
+```bash
+# Clone the repository
+git clone https://github.com/meddelare/meddelare-node-server.git
 
-## Options
+cd meddelare-node-server
 
-Options are passed through query parameters in the url
+# Install dependencies
+npm install
 
-### Networks
+# Run the server
+node social-buttons-server.js
+```
 
-Currently only Twitter, Facebook and Google Plus are supported
+- Test by accessing your local server on [http://localhost:5000/?networks=facebook,twitter,googleplus&url=http://meddelare.com](http://localhost:5000/?networks=facebook,twitter,googleplus&url=http://meddelare.com)
+- You can optionally push to a Heroku app to automatically deploy.
 
-You use the `networks` query parameter to specify which ones you want to use as a comma-separated list e.g.
 
-`networks=facebook,twitter,googleplus` or  `networks=facebook`
 
-### Url
+## Response
 
-You use the `url` parameter to specify the address which you want to count the total number of shares for e.g. `url=http://1984day.com`
+See this [example API call](https://meddelare-node-server.herokuapp.com/?networks=facebook,twitter,googleplus&url=http://meddelare.com). The response is delivered as JSON, or JSONP if you specify a callback.
 
-If you don't specify a `url` then the server will try to get the referring urls total share count. So if you make the API call on your homepage without the `url` parameter, the API server will return the numbe rof shares for your homepage url.
+```json
+{
+  "facebook": 5281,
+  "googleplus": 42,
+  "twitter": 8719
+}
+```
 
-## CloudFront
 
-You don't want to be hitting the social networks API's constantly so it would be wise to throw up a cache in front such as CloudFront.
-
-In CloudFront just make sure you to inherit cache control directives from the server and enable query string forwarding.
-
-Eithr use your CloudFront url to access the API server or cname it with a custom domain of your choice.
-
-## Cross domain
-
-The server as it is has CORS enabled which means any website can call the API SERVER. You can easily white list if this becomes a problem.
 
 ## HTML Widgets
 
-**We would love to start collecting widgets that people design and want to share, please submit them in a pull request to [meddelare-examples](https://github.com/meddelare/meddelare-examples) and we will create a new section to list them**
+View examples on [meddelare.github.io/meddelare-examples](https://meddelare.github.io/meddelare-examples).
 
-You can do anything you want to display your share totals when using the API. There are the examples linked at the top of the README and some short code below. Notice that we are using a CloudFront distribution in the examples.
+**We would love to feature your widget design!**  
+Please submit your design in a pull request to [meddelare-examples](https://github.com/meddelare/meddelare-examples) and we will add it to our list.
+
+You can do anything you want to display your share counts when using the API. Below is a very simple example showing the count per network -- see this [example API call with text](https://meddelare.github.io/meddelare-examples/examples/text/). Note that we are using a CloudFront distribution domain in the examples.
 
 ```html
+<!DOCTYPE html>
 <html>
-	<head>
-	</head>
-	<body>
-		<h3>Twitter</h3>
+  <body>
+    <h3>Twitter</h3>
     <span id="twitter"></span>
     <h3>Facebook</h3>
     <span id="facebook"></span>
     <h3>Google Plus</h3>
     <span id="googleplus"></span>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-  <script type="text/javascript">
-    $.ajax('https://d12cncu17l9pr5.cloudfront.net/?networks=facebook,twitter,googleplus&url=http://meddelare.com', {
-      success: function (res, err) {
-        $.each(res, function(network, value){
-          $('#'+network).text(value);
-        })      
-      }
-    })
-  </script>
-	</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script>
+      $.ajax("https://d12cncu17l9pr5.cloudfront.net/?networks=facebook,twitter,googleplus&url=http://meddelare.com", {
+        success: function (res, err) {
+          $.each(res, function (network, value) {
+            $("#" + network).text(value);
+          });
+        }
+      });
+    </script>
+  </body>
 </html>
 ```
+
+
+
+## Options
+
+Options are passed using query parameters in the url.
+
+
+**Networks**  
+Currently Twitter, Facebook and Google Plus are supported.
+
+You use the `networks` query parameter to specify which ones you want to use as a comma-separated list (no spaces), for example `networks=facebook,twitter,googleplus` or `networks=facebook`.
+
+
+**Url (optional)**  
+You use the `url` parameter to specify the address which you want to retrieve the number of shares for, for example `url=http://meddelare.com`.
+
+If you don't specify a `url` then the server will try to get the referring url's (HTTP `Referer` header) share count. This makes it easy to dynamically get the counts for the page currently open in the browser.
+
+
+**Callback (optional)**  
+If you specify the `callback` parameter, the results will be delivered as JSONP instead of plain JSON.
+
+
+
+## Configuration
+
+Configure the node.js server instance at launch time. Where you set the environment variable depends on your system, but examples below are using the command line.
+
+**HTTP cache time**  
+The environment variable `CACHE_TIME` can be used to set the time, in seconds, that the browser (or CDN) should cache results. Cached results vary on the request query string. To set the HTTP cache to ten minutes, use `CACHE_TIME=600 node social-buttons-server.js`.
+
+
+
+**Cross-domain requests**  
+The server has [cross-origin resource sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) (CORS) enabled for whitelisted domains, which need to be configured in the file `social-buttons-server.js`.
+
+
+
+## Content delivery networks
+
+You don't want to be hitting the social networks APIs constantly so it would be wise to throw up a cache, such as CloudFront, in front.
+
+In CloudFront, just make sure you to inherit cache control directives from the server and enable query string forwarding. Either use your CloudFront distribution domain to access the API server or `CNAME` it with a custom domain of your choice.
 
 
 
