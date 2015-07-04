@@ -14,16 +14,10 @@ app.use(express.logger());
 var whitelist = [
   'http://localhost:4000',
   'https://localhost:4000',
-  'http://social-buttons-server.herokuapp.com',
-  'http://dev.stopwatching.us',
-  'https://dev.stopwatching.us',
-  'http://rally.stopwatching.us',
-  'https://rally.stopwatching.us',
-  'http://2.stopwatching.us',
-  'https://2.stopwatching.us',
-  'http://thedaywefightback.org',
-  'https://thedaywefightback.org',
-  'https://d28jjwuneuxo3n.cloudfront.net'
+  'http://meddelare.com',
+  'https://meddelare.github.io',
+  'https://meddelare-node-server.herokuapp.com',
+  'https://d12cncu17l9pr5.cloudfront.net',
 ];
 
 var corsOptions = {

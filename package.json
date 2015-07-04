@@ -1,19 +1,39 @@
 {
-  "name": "social-button-server",
-  "version": "0.0.2",
-  "description": "Install social share counters on your website with your own hosted solution which only makes 1 API request and loads minimal or zero assets to display the counters.",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/tfrce/social-buttons-server.git"
-  },
-  "dependencies": {
-    "async": "~0.2.10",
-    "cors": "~2.1.1",
-    "express": "~3.4.8",
-    "request": "~2.33.0"
-  },
-  "engines": {
-    "node": "0.10.x",
-    "npm": "1.3.x"
-  }
+    "name": "meddelare-server",
+    "version": "1.0.0",
+    "description": "Install social share counters on your website with your own hosted solution which only makes 1 API request and loads minimal or zero assets to display the counters.",
+    "homepage": "http://meddelare.com/",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/meddelare/meddelare-node-server.git"
+    },
+    "bugs": {
+        "url": "https://github.com/meddelare/meddelare-node-server/issues"
+    },
+    "main": "social-buttons-server.js",
+    "dependencies": {
+        "async": "~0.2.10",
+        "cors": "~2.1.1",
+        "express": "~3.4.8",
+        "request": "~2.33.0"
+    },
+    "engines": {
+        "node": "0.10.x",
+        "npm": "1.3.x"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Meddelare",
+        "url": "http://meddelare.com/"
+    },
+    "contributors": [{
+        "name": "Thomas Davis",
+        "url": "http://thomasdav.is/"
+    }, {
+        "name": "Beau Gunderson",
+        "url": "https://beaugunderson.com/"
+    }, {
+        "name": "Joel Purra",
+        "url": "http://joelpurra.com/"
+    }]
 }

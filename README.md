@@ -1,4 +1,4 @@
-# Social Buttons Server
+# [Meddelare](http://meddelare.com/) Social Buttons Server [meddelare-node-server](https://github.com/meddelare/meddelare-node-server)
 
 
 Install social share counters on your website with your own hosted solution which only makes 1 API request and loads minimal or zero assets to display the counters.
@@ -7,9 +7,9 @@ This is an open source and self-hosted alternative to services such as AddThis a
 
 Because you run the middle man server your self, you are also defending your users privacy against the social networks. (Users only opt into the tracking once they decide to share and not just because they visited your page)
 
-* [Example API Call](http://social-buttons-server.herokuapp.com/?networks=facebook,twitter,googleplus&url=https://rally.stopwatching.us)
-* [Example API Call with Buttons](http://tfrce.github.io/social-buttons-server/examples/button.html)
-* [Example API Call with Text (fast)](http://tfrce.github.io/social-buttons-server/examples/text.html)
+* [Example API Call](https://meddelare-node-server.herokuapp.com/?networks=facebook,twitter,googleplus&url=http://meddelare.com)
+* [Example API Call with Buttons](https://meddelare.github.io/meddelare-examples/examples/button.html)
+* [Example API Call with Text (fast)](https://meddelare.github.io/meddelare-examples/examples/text.html)
 
 
 ## Features
@@ -19,9 +19,9 @@ Because you run the middle man server your self, you are also defending your use
 ## Getting started
 
 1. Clone(or fork) the repository
-2. Install dependencies ```npm install```
-3. Run the server ```node social-buttons-server.js```
-4. Access your stats at ```http://localhost:5000/?networks=facebook,twitter,googleplus&url=https://rally.stopwatching.us```
+2. Install dependencies `npm install`
+3. Run the server `node social-buttons-server.js`
+4. Access your stats at `http://localhost:5000/?networks=facebook,twitter,googleplus&url=http://meddelare.com`
 5. __Optionally push to a heroku app to automatically deploy__
 
 ## Options
@@ -32,15 +32,15 @@ Options are passed through query parameters in the url
 
 Currently only Twitter, Facebook and Google Plus are supported
 
-You use the ```networks``` query parameter to specify which ones you want to use as a comma-separated list e.g.
+You use the `networks` query parameter to specify which ones you want to use as a comma-separated list e.g.
 
-```networks=facebook,twitter,googleplus``` or  ```networks=facebook```
+`networks=facebook,twitter,googleplus` or  `networks=facebook`
 
 ### Url
 
-You use the ```url``` parameter to specify the address which you want to count the total number of shares for e.g. ```url=http://1984day.com```
+You use the `url` parameter to specify the address which you want to count the total number of shares for e.g. `url=http://1984day.com`
 
-If you don't specify a ```url``` then the server will try to get the referring urls total share count. So if you make the API call on your homepage without the ```url``` parameter, the API server will return the numbe rof shares for your homepage url.
+If you don't specify a `url` then the server will try to get the referring urls total share count. So if you make the API call on your homepage without the `url` parameter, the API server will return the numbe rof shares for your homepage url.
 
 ## CloudFront
 
@@ -56,11 +56,11 @@ The server as it is has CORS enabled which means any website can call the API SE
 
 ## HTML Widgets
 
-**We would love to start collecting widgets that people design and want to share, please submit them in a pull request to the `gh-pages` branch and we will create a new section to list them**
+**We would love to start collecting widgets that people design and want to share, please submit them in a pull request to [meddelare-examples](https://github.com/meddelare/meddelare-examples) and we will create a new section to list them**
 
 You can do anything you want to display your share totals when using the API. There are the examples linked at the top of the README and some short code below. Notice that we are using a CloudFront distribution in the examples.
 
-```
+```html
 <html>
 	<head>
 	</head>
@@ -72,9 +72,9 @@ You can do anything you want to display your share totals when using the API. Th
     <h3>Google Plus</h3>
     <span id="googleplus"></span>
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <script type="text/javascript">
-    $.ajax('http://d28jjwuneuxo3n.cloudfront.net/?networks=facebook,twitter,googleplus&url=https://rally.stopwatching.us', {
+    $.ajax('https://d12cncu17l9pr5.cloudfront.net/?networks=facebook,twitter,googleplus&url=http://meddelare.com', {
       success: function (res, err) {
         $.each(res, function(network, value){
           $('#'+network).text(value);
@@ -85,3 +85,17 @@ You can do anything you want to display your share totals when using the API. Th
 	</body>
 </html>
 ```
+
+
+
+## Thanks
+
+Many thanks goes out to [Taskforce](https://taskforce.is/) for their [social-buttons-server](https://github.com/tfrce/social-buttons-server) (released into the [Public Domain](https://github.com/tfrce/social-buttons-server/tree/faf1a41e5d2d44b7e6de460b9369f11437095af1)) -- especially the creator [@thomasdavis](https://github.com/thomasdavis) and contributor [@beaugunderson](https://github.com/beaugunderson). This software, [meddelare-node-server](https://github.com/meddelare/meddelare-node-server), is based on their work.
+
+
+
+---
+
+Copyright (c) 2015 Team Meddelare <http://meddelare.com/> All rights reserved.
+
+When using [meddelare-node-server](https://github.com/meddelare/meddelare-node-server), comply to the [MIT license](http://opensource.org/licenses/MIT).
