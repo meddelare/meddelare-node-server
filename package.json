@@ -1,6 +1,6 @@
 {
     "name": "meddelare-server",
-    "version": "2.0.0-alpha.1",
+    "version": "2.0.0-alpha.2",
     "description": "Install custom social share counters on your website with your own hosted solution, which only makes a single API request and loads minimal or zero assets to display the counters.",
     "homepage": "http://meddelare.com/",
     "repository": {
@@ -16,6 +16,17 @@
         "express": "^4.12.4",
         "meddelare-express": "^1.0.0",
         "morgan": "^1.5.3"
+    },
+    "devDependencies": {
+        "eslint": "^0.23.0",
+        "jscs": "^1.13.1",
+        "pre-commit": "^1.0.10"
+    },
+    "scripts": {
+        "test": "npm run lint && echo && echo 'No tests have been added!'",
+        "lint": "npm run eslint && npm run jscs",
+        "jscs": "node node_modules/jscs/bin/jscs app/server.js",
+        "eslint": "node node_modules/eslint/bin/eslint.js app/server.js"
     },
     "engines": {
         "node": "0.10.x",

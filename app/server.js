@@ -1,3 +1,5 @@
+"use strict";
+
 var express = require("express"),
 
     PORT = process.env.PORT || 5000,
@@ -41,7 +43,7 @@ app.use(expressLogger);
 
 
 if (whitelist.length === 0) {
-    console.warn("The CORS domain whitelist is empty. This might lead to problems when requests arrive originate from domains other than the one the server is running on.")
+    console.warn("The CORS domain whitelist is empty. This might lead to problems when requests arrive originate from domains other than the one the server is running on.");
 }
 
 app.use(cors(corsOptions));
