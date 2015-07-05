@@ -1,55 +1,53 @@
-var cors = require('cors');
-var express = require('express');
+var express = require("express"),
 
-var PORT = process.env.PORT || 5000;
+    PORT = process.env.PORT || 5000,
 
-var socialButtonsServer = require('./lib/social-buttons-server-middleware.js');
+    cors = require("cors"),
 
-var app = express();
+    socialButtonsServer = require("./lib/social-buttons-server-middleware.js"),
 
-var morgan = require("morgan");
+    morgan = require("morgan"),
+    expressLogger = morgan("combined", {
+        skip: function(req, res) {
+            return res.statusCode < 400;
+        }
+    }),
 
-var expressLogger = morgan("combined", {
-    skip: function(req, res) {
-        return res.statusCode < 400;
-    }
-});
+    // Use CORS domain whitelisting.
+    // Requires that Cloudflare (or other CDNs) let the right headers pass to and from the browser.
+    getWhitelist = function() {
+        var whitelist = [];
+
+        if (process.env.DOMAIN_WHITELIST) {
+            whitelist = process.env.DOMAIN_WHITELIST.split(",");
+        }
+
+        return whitelist;
+    },
+    whitelist = getWhitelist(),
+    corsOptions = {
+        origin: function(origin, cb) {
+            cb(null, whitelist.indexOf(origin) !== -1);
+        }
+    },
+
+    app = express();
 
 app.use(expressLogger);
 
 
-// Use CORS domain whitelisting.
-// Requires that Cloudflare (or other CDNs) let the right headers pass to and from the browser.
-function getWhitelist(){
-  var whitelist = [];
-
-  if(process.env.DOMAIN_WHITELIST) {
-    whitelist = process.env.DOMAIN_WHITELIST.split(",");
-  }
-
-  return whitelist;
+if (whitelist.length === 0) {
+    console.warn("The CORS domain whitelist is empty. This might lead to problems when requests arrive originate from domains other than the one the server is running on.")
 }
-
-var whitelist = getWhitelist();
-
-if(whitelist.length === 0){
-  console.warn("The CORS domain whitelist is empty. This might lead to problems when requests arrive originate from domains other than the one the server is running on.")
-}
-
-var corsOptions = {
-  origin: function (origin, cb) {
-    cb(null, whitelist.indexOf(origin) !== -1);
-  }
-};
 
 app.use(cors(corsOptions));
 
-app.options('*', cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 
 
 app.use("/", socialButtonsServer());
 
-app.listen(PORT, function () {
-  console.log('Listening on ' + PORT);
+app.listen(PORT, function() {
+    console.log("Listening on " + PORT);
 });
