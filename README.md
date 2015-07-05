@@ -126,7 +126,9 @@ The environment variable `CACHE_TIME` can be used to set the time, in seconds, t
 
 
 **Cross-domain requests**  
-The server has [cross-origin resource sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) (CORS) enabled for whitelisted domains, which need to be configured in the file `social-buttons-server.js`.
+The server has [cross-origin resource sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) (CORS) enabled for whitelisted domains, which need to be configured. Set the environment variable `DOMAIN_WHITELIST` to a list of comma-separated (no spaces) protocols+domains which are allowed to use your (private) meddelare-node-server instance.
+
+This example whitelists domains Meddelare uses: `DOMAIN_WHITELIST='http://meddelare.com,https://meddelare.github.io,https://meddelare-node-server.herokuapp.com,https://d12cncu17l9pr5.cloudfront.net' node social-buttons-server.js`
 
 
 

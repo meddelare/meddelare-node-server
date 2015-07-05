@@ -17,14 +17,24 @@ var expressLogger = morgan("combined", {
 
 app.use(expressLogger);
 
-var whitelist = [
-  'http://localhost:4000',
-  'https://localhost:4000',
-  'http://meddelare.com',
-  'https://meddelare.github.io',
-  'https://meddelare-node-server.herokuapp.com',
-  'https://d12cncu17l9pr5.cloudfront.net',
-];
+
+// Use CORS domain whitelisting.
+// Requires that Cloudflare (or other CDNs) let the right headers pass to and from the browser.
+function getWhitelist(){
+  var whitelist = [];
+
+  if(process.env.DOMAIN_WHITELIST) {
+    whitelist = process.env.DOMAIN_WHITELIST.split(",");
+  }
+
+  return whitelist;
+}
+
+var whitelist = getWhitelist();
+
+if(whitelist.length === 0){
+  console.warn("The CORS domain whitelist is empty. This might lead to problems when requests arrive originate from domains other than the one the server is running on.")
+}
 
 var corsOptions = {
   origin: function (origin, cb) {
@@ -32,18 +42,11 @@ var corsOptions = {
   }
 };
 
-// Block all hosts not in the whitelist
-//app.use(function (req, res, next) {
-//  if (whitelist.indexOf(req.headers.origin) === -1) {
-//    return res.send({ blocked: true });
-//  }
-//
-//  next();
-//});
-
 app.use(cors(corsOptions));
 
 app.options('*', cors(corsOptions));
+
+
 
 app.use("/", socialButtonsServer());
 
