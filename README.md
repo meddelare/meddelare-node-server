@@ -23,8 +23,9 @@ This is an open source and self-hosted alternative to sharing services such as A
 - The server calls social networks in parallel, making it (approximately) as fast to get the count from one as several at once.
 - No third party requirements -- you can host both the social buttons server and any resources yourself.
 - Proxies calls from your users to the social networks, blocking their user tracking until the user decides to click a share button.
+- Super-fast in-memory cache keeps the most recent results per network and url.
 - Heroku enabled -- create an app and deploy instantly.
-- Sends cache control HTTP headers so you can throw a [content delivery network](https://en.wikipedia.org/wiki/Content_delivery_network) (CDN) service, such as CloudFront, in front with ease. This should result in faster API calls and less chance of getting rate limited.
+- Sends cache control HTTP headers so client cache results and you can throw a [content delivery network](https://en.wikipedia.org/wiki/Content_delivery_network) (CDN) service, such as CloudFront, in front with ease.
 
 
 
@@ -127,6 +128,8 @@ Configure the node.js server instance at launch time. Where you set the environm
 **HTTP cache time**  
 The environment variable `CACHE_TIME` can be used to set the time, in seconds, that the browser (or CDN) should cache results. Cached results vary on the request query string. To set the HTTP cache to ten minutes, use `CACHE_TIME=600 node social-buttons-server.js`.
 
+Note that the in-memory cache is handled in an underlying layer and configured separately; this currently requires modifying the source code to pass the correct options.
+
 
 
 **Cross-domain requests**  
@@ -138,9 +141,9 @@ This example whitelists domains Meddelare uses: `DOMAIN_WHITELIST='http://meddel
 
 ## Content delivery networks
 
-You don't want to be hitting the social networks APIs constantly so it would be wise to throw up a cache, such as CloudFront, in front.
+If you want to reduce your server load it would be wise to throw up a cache, such as CloudFront, in front.
 
-In CloudFront, just make sure you to inherit cache control directives from the server and enable query string forwarding. Either use your CloudFront distribution domain to access the API server or `CNAME` it with a custom domain of your choice.
+In CloudFront, just make sure you to inherit cache control directives from the server, enable query string forwarding and whitelist `Origin` HTTP headers. Either use your CloudFront distribution domain to access the API server or `CNAME` it with a custom domain of your choice.
 
 
 
