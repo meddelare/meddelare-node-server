@@ -7,7 +7,7 @@ Check out [meddelare.com](http://meddelare.com/)!
 
 This is an open source and self-hosted alternative to sharing services such as AddThis and ShareThis. Because you run the proxy server yourself, you are also defending your users' privacy against the social networks' tracking. Users only opt in to their tracking once they decide to click a share button -- never implicitly just because they visited your page.
 
-[![A screenshot of the button example](https://meddelare.github.io/examples/button/screenshot.png)](https://meddelare.github.io/)
+[![A screenshot of the button example](https://meddelare.github.io/meddelare-examples/examples/button/screenshot.png)](https://meddelare.github.io/)
 
 View examples on [meddelare.github.io/meddelare-examples](https://meddelare.github.io/meddelare-examples).
 
