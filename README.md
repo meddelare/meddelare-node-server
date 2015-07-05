@@ -5,11 +5,15 @@ Install **custom social share counters** on your website with your **own hosted 
 
 Check out [meddelare.com](http://meddelare.com/)!
 
+[![A screenshot of the button example](http://meddelare.com/meddelare-examples/examples/button/screenshot.png)](http://meddelare.com/meddelare-examples)
+
+View examples on [meddelare.com/meddelare-examples](http://meddelare.com/meddelare-examples).
+
+
+
+## Standalone node.js server
+
 This is an open source and self-hosted alternative to sharing services such as AddThis and ShareThis. Because you run the proxy server yourself, you are also defending your users' privacy against the social networks' tracking. Users only opt in to their tracking once they decide to click a share button -- never implicitly just because they visited your page.
-
-[![A screenshot of the button example](https://meddelare.github.io/meddelare-examples/examples/button/screenshot.png)](https://meddelare.github.io/)
-
-View examples on [meddelare.github.io/meddelare-examples](https://meddelare.github.io/meddelare-examples).
 
 
 
@@ -60,12 +64,12 @@ See this [example API call](https://meddelare-node-server.herokuapp.com/?network
 
 ## HTML Widgets
 
-View examples on [meddelare.github.io/meddelare-examples](https://meddelare.github.io/meddelare-examples).
+View examples on [meddelare.com/meddelare-examples](http://meddelare.com/meddelare-examples).
 
 **We would love to feature your widget design!**  
 Please submit your design in a pull request to [meddelare-examples](https://github.com/meddelare/meddelare-examples) and we will add it to our list.
 
-You can do anything you want to display your share counts when using the API. Below is a very simple example showing the count per network -- see this [example API call with text](https://meddelare.github.io/meddelare-examples/examples/text/). Note that we are using a CloudFront distribution domain in the examples.
+You can do anything you want to display your share counts when using the API. Below is a very simple example showing the count per network -- see this [example API call with text](http://meddelare.com/meddelare-examples/examples/text/). Note that we are using a CloudFront distribution domain in the examples.
 
 ```html
 <!DOCTYPE html>
