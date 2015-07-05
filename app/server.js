@@ -6,11 +6,11 @@ var express = require("express"),
 
     cors = require("cors"),
 
-    SocialButtonsServerMiddleware = require("meddelare-express"),
-    socialButtonsServerMiddlewareOptions = {
+    MeddelareExpress = require("meddelare-express"),
+    meddelareExpressOptions = {
         httpCacheTime: process.env.CACHE_TIME,
     },
-    socialButtonsServerMiddleware = new SocialButtonsServerMiddleware(socialButtonsServerMiddlewareOptions),
+    meddelareExpress = new MeddelareExpress(meddelareExpressOptions),
 
     morgan = require("morgan"),
     expressLogger = morgan("combined", {
@@ -52,7 +52,7 @@ app.options("*", cors(corsOptions));
 
 
 
-app.use("/", socialButtonsServerMiddleware.getRouter());
+app.use("/", meddelareExpress.getRouter());
 
 app.listen(PORT, function() {
     console.log("Listening on " + PORT);
