@@ -1,4 +1,4 @@
-# [Meddelare](http://meddelare.com/) Social Buttons Server [meddelare-node-server](https://github.com/meddelare/meddelare-node-server)
+# [Meddelare](http://meddelare.com/) Social Buttons Standalone Node.js Server [meddelare-node-server](https://github.com/meddelare/meddelare-node-server)
 
 
 Install **custom social share counters** on your website with your **own hosted solution**, which only makes **a single API request** and loads **minimal or zero assets** to display the counters.
@@ -11,15 +11,18 @@ View examples on [meddelare.com/meddelare-examples](http://meddelare.com/meddela
 
 
 
-## Standalone node.js server
+## Standalone Node.js server
 
 This is an open source and self-hosted alternative to sharing services such as AddThis and ShareThis. Because you run the proxy server yourself, you are also defending your users' privacy against the social networks' tracking. Users only opt in to their tracking once they decide to click a share button -- never implicitly just because they visited your page.
+
+- If you want to use Meddelare in an existing Express server, check out [meddelare-node-expess](https://github.com/meddelare/meddelare-node-expess).
+- If you want to use Meddelare from another server/service, check out [meddelare-node-counters](https://github.com/meddelare/meddelare-node-counters).
 
 
 
 ## Features
 
-- Get counts from multiple social networks in one API call, delivered as [JSON](https://en.wikipedia.org/wiki/JSON) or [JSONP](https://en.wikipedia.org/wiki/JSONP).
+- Get counts from multiple social networks in a single API call, delivered as [JSON](https://en.wikipedia.org/wiki/JSON) or [JSONP](https://en.wikipedia.org/wiki/JSONP).
 - The server calls social networks in parallel, making it (approximately) as fast to get the count from one as several at once.
 - No third party requirements -- you can host both the social buttons server and any resources yourself.
 - Proxies calls from your users to the social networks, blocking their user tracking until the user decides to click a share button.
@@ -41,7 +44,7 @@ cd meddelare-node-server
 npm install
 
 # Run the server
-node social-buttons-server.js
+node app/server.js
 ```
 
 - Test by accessing your local server on [http://localhost:5000/?networks=facebook,twitter,googleplus&url=http://meddelare.com](http://localhost:5000/?networks=facebook,twitter,googleplus&url=http://meddelare.com)
@@ -107,17 +110,17 @@ Options are passed using query parameters in the url.
 **Networks**  
 Currently Twitter, Facebook and Google Plus are supported.
 
-You use the `networks` query parameter to specify which ones you want to use as a comma-separated list (no spaces), for example `networks=facebook,twitter,googleplus` or `networks=facebook`.
+Use the `networks` query parameter to specify which ones you want to use as a comma-separated list (no spaces), for example `networks=facebook,twitter,googleplus` or `networks=facebook`.
 
 
 **Url (optional)**  
-You use the `url` parameter to specify the address which you want to retrieve the number of shares for, for example `url=http://meddelare.com`.
+Use the `url` parameter to specify the address which you want to retrieve the number of shares for, for example `url=http://meddelare.com`.
 
 If you don't specify a `url` then the server will try to get the referring url's (HTTP `Referer` header) share count. This makes it easy to dynamically get the counts for the page currently open in the browser.
 
 
 **Callback (optional)**  
-If you specify the `callback` parameter, the results will be delivered as JSONP instead of plain JSON.
+Specify the `callback` parameter to have the results delivered as JSONP instead of plain JSON.
 
 
 
@@ -126,7 +129,7 @@ If you specify the `callback` parameter, the results will be delivered as JSONP 
 Configure the node.js server instance at launch time. Where you set the environment variable depends on your system, but examples below are using the command line.
 
 **HTTP cache time**  
-The environment variable `CACHE_TIME` can be used to set the time, in seconds, that the browser (or CDN) should cache results. Cached results vary on the request query string. To set the HTTP cache to ten minutes, use `CACHE_TIME=600 node social-buttons-server.js`.
+The environment variable `CACHE_TIME` can be used to set the time, in seconds, that the browser (or CDN) should cache results. Cached results vary on the request query string. To set the HTTP cache to ten minutes, use `CACHE_TIME=600 node app/server.js`.
 
 Note that the in-memory cache is handled in an underlying layer and configured separately; this currently requires modifying the source code to pass the correct options.
 
@@ -135,7 +138,7 @@ Note that the in-memory cache is handled in an underlying layer and configured s
 **Cross-domain requests**  
 The server has [cross-origin resource sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) (CORS) enabled for whitelisted domains, which need to be configured. Set the environment variable `DOMAIN_WHITELIST` to a list of comma-separated (no spaces) protocols+domains which are allowed to use your (private) meddelare-node-server instance.
 
-This example whitelists domains Meddelare uses: `DOMAIN_WHITELIST='http://meddelare.com,https://meddelare.github.io,https://meddelare-node-server.herokuapp.com,https://d12cncu17l9pr5.cloudfront.net' node social-buttons-server.js`
+This example whitelists domains Meddelare uses: `DOMAIN_WHITELIST='http://meddelare.com,https://meddelare.github.io,https://meddelare-node-server.herokuapp.com,https://d12cncu17l9pr5.cloudfront.net' node app/server.js`
 
 
 

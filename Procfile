@@ -1,1 +1,1 @@
-web: node social-buttons-server.js
+web: node app/server.js

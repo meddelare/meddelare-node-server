@@ -1,6 +1,6 @@
 {
     "name": "meddelare-server",
-    "version": "1.5.1",
+    "version": "2.0.0-alpha.1",
     "description": "Install custom social share counters on your website with your own hosted solution, which only makes a single API request and loads minimal or zero assets to display the counters.",
     "homepage": "http://meddelare.com/",
     "repository": {
@@ -10,15 +10,12 @@
     "bugs": {
         "url": "https://github.com/meddelare/meddelare-node-server/issues"
     },
-    "main": "social-buttons-server.js",
+    "main": "app/server.js",
     "dependencies": {
-        "bluebird": "^2.9.30",
-        "cors": "~2.1.1",
+        "cors": "^2.1.1",
         "express": "^4.12.4",
-        "extend": "^3.0.0",
-        "memory-cache": "^0.1.4",
-        "morgan": "^1.5.3",
-        "request": "~2.33.0"
+        "meddelare-express": "^1.0.0",
+        "morgan": "^1.5.3"
     },
     "engines": {
         "node": "0.10.x",

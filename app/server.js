@@ -4,7 +4,7 @@ var express = require("express"),
 
     cors = require("cors"),
 
-    SocialButtonsServerMiddleware = require("./lib/social-buttons-server-middleware.js"),
+    SocialButtonsServerMiddleware = require("meddelare-express"),
     socialButtonsServerMiddlewareOptions = {
         httpCacheTime: process.env.CACHE_TIME,
     },
