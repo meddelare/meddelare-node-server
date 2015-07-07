@@ -22,14 +22,13 @@ This is an open source and self-hosted alternative to sharing services such as A
 
 ## Features
 
-- Get counts from multiple social networks in a single API call, delivered as [JSON](https://en.wikipedia.org/wiki/JSON) or [JSONP](https://en.wikipedia.org/wiki/JSONP).
-- The server calls social networks in parallel, making it (approximately) as fast to get the count from one as several at once.
-- No third party requirements -- you can host both the social buttons server and any resources yourself.
-- Proxies calls from your users to the social networks, blocking their user tracking until the user decides to click a share button.
-- Super-fast in-memory cache keeps the most recent results per network and url.
-- Heroku enabled -- create an app and deploy instantly.
-- Sends cache control HTTP headers so client cache results and you can throw a [content delivery network](https://en.wikipedia.org/wiki/Content_delivery_network) (CDN) service, such as CloudFront, in front with ease.
-
+- **Completely customizable** user interface design -- use layout, logotypes, animations of your own choice.
+- **A single API call** to get counts from multiple social networks, delivered as JSON or JSONP.
+- **Calls social networks in parallel** from the server, making it (approximately) as fast to get the count from one as several at once.
+- **No third party resources required** – you can host both the social buttons server and any resources yourself.
+- **Blocks social networks' user tracking** by proxying calls until the user decides to click a share button.
+- **Super-fast in-memory cache** keeps the most recent results per network and url.
+- **Easy to deploy** and prepared for [content delivery network](https://en.wikipedia.org/wiki/Content_delivery_network) (CDN) proxies.
 
 
 ## Getting started
@@ -142,7 +141,7 @@ This example whitelists domains Meddelare uses: `DOMAIN_WHITELIST='http://meddel
 
 
 
-## Content delivery networks
+## [Content delivery networks](https://en.wikipedia.org/wiki/Content_delivery_network) (CDN)
 
 If you want to reduce your server load it would be wise to throw up a cache, such as CloudFront, in front.
 
