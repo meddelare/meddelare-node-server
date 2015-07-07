@@ -3,17 +3,19 @@
 
 Install **custom social share counters** on your website with your **own hosted solution**, which only makes **a single API request** and loads **minimal or zero assets** to display the counters.
 
-Check out [meddelare.com](http://meddelare.com/)!
+[![A screenshot of the button example](https://cloud.githubusercontent.com/assets/1398544/8511166/5c92d0b2-230b-11e5-895a-d3b67da749b5.png)](http://meddelare.com/)
 
-[![A screenshot of the button example](https://cloud.githubusercontent.com/assets/1398544/8511166/5c92d0b2-230b-11e5-895a-d3b67da749b5.png)](http://meddelare.com/meddelare-examples)
+Check out [meddelare.com](http://meddelare.com/) and view examples on [meddelare.com/meddelare-examples](http://meddelare.com/meddelare-examples).
 
-View examples on [meddelare.com/meddelare-examples](http://meddelare.com/meddelare-examples).
+
+
+---
 
 
 
 ## Standalone Node.js server
 
-This is an open source and self-hosted alternative to sharing services such as AddThis and ShareThis. Because you run the proxy server yourself, you are also defending your users' privacy against the social networks' tracking. Users only opt in to their tracking once they decide to click a share button -- never implicitly just because they visited your page.
+This is an open source and **self-hosted alternative** to sharing services such as AddThis and ShareThis. Because you run the proxy server yourself, you are also **defending your users' privacy** against the social networks' tracking. Users only opt in to their tracking once they decide to click a share button -- never implicitly just because they visited your page.
 
 - If you want to use Meddelare in an existing Express server, check out [meddelare-node-express](https://github.com/meddelare/meddelare-node-express).
 - If you want to use Meddelare from another server/service, check out [meddelare-node-counters](https://github.com/meddelare/meddelare-node-counters).
