@@ -1,11 +1,11 @@
-# [Meddelare](http://meddelare.com/) Social Buttons Standalone Node.js Server [meddelare-node-server](https://github.com/meddelare/meddelare-node-server)
+# [Meddelare](https://meddelare.com/) Social Buttons Standalone Node.js Server [meddelare-node-server](https://github.com/meddelare/meddelare-node-server)
 
 
 Install **custom social share counters** on your website with your **own hosted solution**, which only makes **a single API request** and loads **minimal or zero assets** to display the counters.
 
-[![A screenshot of the button example](https://cloud.githubusercontent.com/assets/1398544/8511166/5c92d0b2-230b-11e5-895a-d3b67da749b5.png)](http://meddelare.com/)
+[![A screenshot of the button example](https://cloud.githubusercontent.com/assets/1398544/8511166/5c92d0b2-230b-11e5-895a-d3b67da749b5.png)](https://meddelare.com/)
 
-Check out [meddelare.com](http://meddelare.com/) and view examples on [meddelare.com/meddelare-examples](http://meddelare.com/meddelare-examples).
+Check out [meddelare.com](https://meddelare.com/) and view examples on [meddelare.com/meddelare-examples](https://meddelare.com/meddelare-examples).
 
 
 
@@ -48,14 +48,14 @@ npm install
 node app/server.js
 ```
 
-- Test by accessing your local server on [http://localhost:5000/?networks=facebook,twitter,googleplus&url=http://meddelare.com](http://localhost:5000/?networks=facebook,twitter,googleplus&url=http://meddelare.com)
+- Test by accessing your local server on [http://localhost:5000/?networks=facebook,twitter,googleplus&url=https://meddelare.com](http://localhost:5000/?networks=facebook,twitter,googleplus&url=https://meddelare.com)
 - You can optionally push to a Heroku app to automatically deploy.
 
 
 
 ## Response
 
-See this [example API call](https://meddelare-node-server.herokuapp.com/?networks=facebook,twitter,googleplus&url=http://meddelare.com). The response is delivered as JSON, or JSONP if you specify a callback.
+See this [example API call](https://meddelare-node-server.herokuapp.com/?networks=facebook,twitter,googleplus&url=https://meddelare.com). The response is delivered as JSON, or JSONP if you specify a callback.
 
 ```json
 {
@@ -69,12 +69,12 @@ See this [example API call](https://meddelare-node-server.herokuapp.com/?network
 
 ## HTML Widgets
 
-View examples on [meddelare.com/meddelare-examples](http://meddelare.com/meddelare-examples).
+View examples on [meddelare.com/meddelare-examples](https://meddelare.com/meddelare-examples).
 
 **We would love to feature your widget design!**  
 Please submit your design in a pull request to [meddelare-examples](https://github.com/meddelare/meddelare-examples) and we will add it to our list.
 
-You can do anything you want to display your share counts when using the API. Below is a very simple example showing the count per network -- see this [example API call with text](http://meddelare.com/meddelare-examples/examples/text/). Note that we are using a CloudFront distribution domain in the examples.
+You can do anything you want to display your share counts when using the API. Below is a very simple example showing the count per network -- see this [example API call with text](https://meddelare.com/meddelare-examples/examples/text/). Note that we are using a CloudFront distribution domain in the examples.
 
 ```html
 <!DOCTYPE html>
@@ -89,7 +89,7 @@ You can do anything you want to display your share counts when using the API. Be
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script>
-      $.ajax("https://d12cncu17l9pr5.cloudfront.net/?networks=facebook,twitter,googleplus&url=http://meddelare.com", {
+      $.ajax("https://d12cncu17l9pr5.cloudfront.net/?networks=facebook,twitter,googleplus&url=https://meddelare.com", {
         success: function (res, err) {
           $.each(res, function (network, value) {
             $("#" + network).text(value);
@@ -115,7 +115,7 @@ Use the `networks` query parameter to specify which ones you want to use as a co
 
 
 **Url (optional)**  
-Use the `url` parameter to specify the address which you want to retrieve the number of shares for, for example `url=http://meddelare.com`.
+Use the `url` parameter to specify the address which you want to retrieve the number of shares for, for example `url=https://meddelare.com`.
 
 If you don't specify a `url` then the server will try to get the referring url's (HTTP `Referer` header) share count. This makes it easy to dynamically get the counts for the page currently open in the browser.
 
@@ -139,7 +139,7 @@ Note that the in-memory cache is handled in an underlying layer and configured s
 **Cross-domain requests**  
 The server has [cross-origin resource sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) (CORS) enabled for whitelisted domains, which need to be configured. Set the environment variable `DOMAIN_WHITELIST` to a list of comma-separated (no spaces) protocols+domains which are allowed to use your (private) meddelare-node-server instance.
 
-This example whitelists domains Meddelare uses: `DOMAIN_WHITELIST='http://meddelare.com,https://meddelare.github.io,https://meddelare-node-server.herokuapp.com,https://d12cncu17l9pr5.cloudfront.net' node app/server.js`
+This example whitelists domains Meddelare uses: `DOMAIN_WHITELIST='https://meddelare.com,https://meddelare.github.io,https://meddelare-node-server.herokuapp.com,https://d12cncu17l9pr5.cloudfront.net' node app/server.js`
 
 
 
@@ -159,6 +159,6 @@ Many thanks goes out to [Taskforce](https://taskforce.is/) for their [social-but
 
 ---
 
-Copyright (c) 2015 Team Meddelare <http://meddelare.com/> All rights reserved.
+Copyright (c) 2015 Team Meddelare <https://meddelare.com/> All rights reserved.
 
 When using [meddelare-node-server](https://github.com/meddelare/meddelare-node-server), comply to the [MIT license](http://opensource.org/licenses/MIT).

@@ -2,7 +2,7 @@
     "name": "meddelare-server",
     "version": "2.0.0",
     "description": "Install custom social share counters on your website with your own hosted solution, which only makes a single API request and loads minimal or zero assets to display the counters.",
-    "homepage": "http://meddelare.com/",
+    "homepage": "https://meddelare.com/",
     "repository": {
         "type": "git",
         "url": "git://github.com/meddelare/meddelare-node-server.git"
@@ -35,7 +35,7 @@
     "license": "MIT",
     "author": {
         "name": "Meddelare",
-        "url": "http://meddelare.com/"
+        "url": "https://meddelare.com/"
     },
     "contributors": [{
         "name": "Thomas Davis",
