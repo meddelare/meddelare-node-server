@@ -15,7 +15,7 @@ View examples on [meddelare.com/meddelare-examples](http://meddelare.com/meddela
 
 This is an open source and self-hosted alternative to sharing services such as AddThis and ShareThis. Because you run the proxy server yourself, you are also defending your users' privacy against the social networks' tracking. Users only opt in to their tracking once they decide to click a share button -- never implicitly just because they visited your page.
 
-- If you want to use Meddelare in an existing Express server, check out [meddelare-node-expess](https://github.com/meddelare/meddelare-node-expess).
+- If you want to use Meddelare in an existing Express server, check out [meddelare-node-express](https://github.com/meddelare/meddelare-node-express).
 - If you want to use Meddelare from another server/service, check out [meddelare-node-counters](https://github.com/meddelare/meddelare-node-counters).
 
 
