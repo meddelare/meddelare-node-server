@@ -161,4 +161,4 @@ Many thanks goes out to [Taskforce](https://taskforce.is/) for their [social-but
 
 Copyright (c) 2015 Team Meddelare <https://meddelare.com/> All rights reserved.
 
-When using [meddelare-node-server](https://github.com/meddelare/meddelare-node-server), comply to the [MIT license](http://opensource.org/licenses/MIT).
+When using [meddelare-node-server](https://github.com/meddelare/meddelare-node-server), comply to the [MIT license](https://opensource.org/licenses/MIT).
