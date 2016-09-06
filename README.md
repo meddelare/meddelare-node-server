@@ -48,14 +48,14 @@ npm install
 node app/server.js
 ```
 
-- Test by accessing your local server on [http://localhost:5000/?networks=facebook,twitter,googleplus&url=https://meddelare.com](http://localhost:5000/?networks=facebook,twitter,googleplus&url=https://meddelare.com)
+- Test by accessing your local server on [http://localhost:5000/?networks=facebook,twitter,googleplus&url=https%3A%2F%2Fmeddelare.com%2F](http://localhost:5000/?networks=facebook,twitter,googleplus&url=https%3A%2F%2Fmeddelare.com%2F)
 - You can optionally push to a Heroku app to automatically deploy.
 
 
 
 ## Response
 
-See this [example API call](https://meddelare-node-server.herokuapp.com/?networks=facebook,twitter,googleplus&url=https://meddelare.com). The response is delivered as JSON, or JSONP if you specify a callback.
+See this [example API call](https://meddelare-node-server.herokuapp.com/?networks=facebook,twitter,googleplus&url=https%3A%2F%2Fmeddelare.com%2F). The response is delivered as JSON, or JSONP if you specify a callback.
 
 ```json
 {
@@ -89,7 +89,11 @@ You can do anything you want to display your share counts when using the API. Be
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script>
-      $.ajax("https://d12cncu17l9pr5.cloudfront.net/?networks=facebook,twitter,googleplus&url=https://meddelare.com", {
+      var url = "https://meddelare.com/";
+      var encoded = encodeURIComponent(url);
+      var networks = ["facebook" , "twitter" , "googleplus"];
+
+      $.ajax("https://d12cncu17l9pr5.cloudfront.net/?networks=" + networks.join(",") + "&url=" + encoded, {
         success: function (res, err) {
           $.each(res, function (network, value) {
             $("#" + network).text(value);
@@ -115,7 +119,14 @@ Use the `networks` query parameter to specify which ones you want to use as a co
 
 
 **Url (optional)**  
-Use the `url` parameter to specify the address which you want to retrieve the number of shares for, for example `url=https://meddelare.com`.
+Use the `url` parameter to specify the address which you want to retrieve the number of shares for, for example `https://meddelare.com/`.
+
+
+- The value needs to be [URL-encoded](http://en.wikipedia.org/wiki/URL_encoding).
+  - This prevents problems when looking up values for pages with, for example, parameters separated by `&`.
+  - For example `https://meddelare.com/` becomes `https%3A%2F%2Fmeddelare.com%2F` when using javascript: `encodeURIComponent("https://meddelare.com/")`.
+- You can use your domain root, or a more specific url pointing to a specific page.
+
 
 If you don't specify a `url` then the server will try to get the referring url's (HTTP `Referer` header) share count. This makes it easy to dynamically get the counts for the page currently open in the browser.
 
