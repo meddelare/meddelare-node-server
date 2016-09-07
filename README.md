@@ -55,7 +55,7 @@ node app/server.js
 
 ## Response
 
-See this [example API call](https://meddelare-node-server.herokuapp.com/?networks=facebook,twitter,googleplus&url=https%3A%2F%2Fmeddelare.com%2F). The response is delivered as JSON, or JSONP if you specify a callback.
+See this [example API call](https://d12cncu17l9pr5.cloudfront.net/?networks=facebook,twitter,googleplus&url=https%3A%2F%2Fmeddelare.com%2F). The response is delivered as JSON, or JSONP if you specify a callback.
 
 ```json
 {
