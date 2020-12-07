@@ -1,5 +1,12 @@
 # [Meddelare](https://meddelare.com/) Social Buttons Standalone Node.js Server [meddelare-node-server](https://github.com/meddelare/meddelare-node-server)
 
+---
+
+⚠️ **The Meddelare Social Buttons project [has been shut down](https://github.com/meddelare/meddelare-superproject/issues/8)** as of 2020-12-07. No updates will be made and the source code will possibly be deleted in the future. Please download what you need as soon as possible.
+
+---
+
+
 
 Install **custom social share counters** on your website with your **own hosted solution**, which only makes **a single API request** and loads **minimal or zero assets** to display the counters.
 
