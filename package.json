@@ -1,6 +1,6 @@
 {
     "name": "meddelare-server",
-    "version": "2.0.3",
+    "version": "2.0.4",
     "description": "Install custom social share counters on your website with your own hosted solution, which only makes a single API request and loads minimal or zero assets to display the counters.",
     "homepage": "https://meddelare.com/",
     "repository": {
@@ -37,14 +37,18 @@
         "name": "Meddelare",
         "url": "https://meddelare.com/"
     },
-    "contributors": [{
-        "name": "Thomas Davis",
-        "url": "http://thomasdav.is/"
-    }, {
-        "name": "Beau Gunderson",
-        "url": "https://beaugunderson.com/"
-    }, {
-        "name": "Joel Purra",
-        "url": "http://joelpurra.com/"
-    }]
+    "contributors": [
+        {
+            "name": "Thomas Davis",
+            "url": "http://thomasdav.is/"
+        },
+        {
+            "name": "Beau Gunderson",
+            "url": "https://beaugunderson.com/"
+        },
+        {
+            "name": "Joel Purra",
+            "url": "http://joelpurra.com/"
+        }
+    ]
 }
